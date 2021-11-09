@@ -3,7 +3,7 @@ import createSagaMiddleware from 'redux-saga'
 import { composeWithDevTools } from 'redux-devtools-extension'
 
 import episodeReducer from '../reducer/episodeReducer'
-import rootSaga from '../saga/saga'
+import rootSaga from '../saga'
 
 // 創建middleware
 const sagaMiddleware = createSagaMiddleware()

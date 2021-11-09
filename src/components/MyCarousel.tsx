@@ -37,8 +37,6 @@ const renderItem = ({ item }: any) => {
 }
 
 const MyCarousel = () => {
-    const [episodes, setEpisodes] = useState<Episode[]>([]);
-    const [isLoading, setLoading] = useState(true);
     const [index, setIndex] = useState(0);
     const dispatch = useDispatch()
     const allEpisode: Array<Episode> = useSelector((state: RootStateOrAny) => state.allEpisode)
@@ -47,33 +45,9 @@ const MyCarousel = () => {
         dispatch(getAllEpisodeBegin())
     }, [])
 
-
-    // const fetchEpisodeDataFromApi = async () => {
-    //     try {
-    //         const dateInISO = new Date().toISOString().substring(0, 10);
-    //         const response = await fetch(`https://api.tvmaze.com/schedule?date=${dateInISO}&country=jp`, {
-    //             method: 'GET',
-    //             headers: {
-    //                 Accept: 'application/json',
-    //                 'Content-Type': 'application/json',
-    //             }
-    //         });
-    //         const json = await response.json();
-    //         setEpisodes(json);
-    //     } catch (error) {
-    //         console.error(error);
-    //     } finally {
-    //         setLoading(false);
-    //     }
-    // }
-
-    // useEffect(() => {
-    //     fetchEpisodeDataFromApi()
-    // }, []);
-
     return (
         <View>
-            {!isLoading ? <ActivityIndicator /> : (
+            {(
                 <><Carousel
                     ref={(c) => c}
                     data={allEpisode}
