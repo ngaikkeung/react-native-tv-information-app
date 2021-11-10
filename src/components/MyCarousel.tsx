@@ -38,7 +38,7 @@ const renderItem = ({ item }: any) => {
 const MyCarousel = () => {
     const [index, setIndex] = useState(0);
     const dispatch = useDispatch()
-    const allEpisode: Array<Episode> = useSelector((state: RootStateOrAny) => state.allEpisode)
+    const { allEpisode, isLoading } = useSelector((state: RootStateOrAny) => state)
 
     useEffect(() => {
         dispatch(getAllEpisodeBegin())
@@ -46,23 +46,24 @@ const MyCarousel = () => {
 
     return (
         <View>
-            {(
-                <><Carousel
-                    ref={(c) => c}
-                    data={allEpisode}
-                    renderItem={renderItem}
-                    sliderWidth={SLIDER_WIDTH}
-                    itemWidth={ITEM_WIDTH}
-                    containerCustomStyle={styles.carouselContainer}
-                    inactiveSlideShift={0}
-                    onSnapToItem={(index) => setIndex(index)}
-                    scrollInterpolator={scrollInterpolators.scrollInterpolator4}
-                    slideInterpolatedStyle={animatedStyles.animatedStyles4}
-                    useScrollView={false}
-                    hasParallaxImages={true}
-                />
-                </>
-            )}
+            {
+                isLoading ?
+                    <ActivityIndicator /> : (
+                        <><Carousel
+                            ref={(c) => c}
+                            data={allEpisode}
+                            renderItem={renderItem}
+                            sliderWidth={SLIDER_WIDTH}
+                            itemWidth={ITEM_WIDTH}
+                            containerCustomStyle={styles.carouselContainer}
+                            inactiveSlideShift={0}
+                            onSnapToItem={(index) => setIndex(index)}
+                            scrollInterpolator={scrollInterpolators.scrollInterpolator4}
+                            slideInterpolatedStyle={animatedStyles.animatedStyles4}
+                            useScrollView={false}
+                            hasParallaxImages={true}
+                        /></>
+                    )}
         </View>
     );
 
