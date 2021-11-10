@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { ActivityIndicator, Text, View, Dimensions, StyleSheet, TouchableOpacity, Image, Platform } from 'react-native';
-import Carousel, { ParallaxImage } from 'react-native-snap-carousel';
-import { Colors } from 'react-native/Libraries/NewAppScreen';
+import Carousel from 'react-native-snap-carousel';
 import { Episode } from '../asset/Episode';
 import { useDispatch, useSelector, RootStateOrAny } from 'react-redux'
 import { getAllEpisodeBegin } from '../redux/action/episodeAction';
