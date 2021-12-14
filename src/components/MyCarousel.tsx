@@ -1,42 +1,18 @@
 import React, { useEffect, useState } from 'react';
 import { ActivityIndicator, Text, View, Dimensions, StyleSheet, TouchableOpacity, Image, Platform } from 'react-native';
 import Carousel from 'react-native-snap-carousel';
-import { Episode } from '../asset/Episode';
 import { useDispatch, useSelector, RootStateOrAny } from 'react-redux'
 import { getAllEpisodeBegin } from '../redux/action/episodeAction';
 import { scrollInterpolators, animatedStyles } from '../utils/animations';
+import { useNavigation } from '@react-navigation/core';
 
 const SLIDER_WIDTH = Dimensions.get('window').width;
 const ITEM_WIDTH = Math.round(SLIDER_WIDTH * 0.85);
 const ITEM_HEIGHT = Math.round(ITEM_WIDTH * 1.2);
 
-const renderItem = ({ item }: any) => {
-    return (
-        <View style={[styles.container, styles.itemContainer]}>
-            <TouchableOpacity
-                activeOpacity={1}
-                style={{ height: '100%', width: '100%' }}>
-                <Image
-                    style={styles.itemImg}
-                    source={{
-                        uri: item.show.image?.original
-                    }}
-                />
-                <View style={styles.textContainer}>
-                    <Text style={styles.itemNameLabel} numberOfLines={2}>
-                        {item.show.name}
-                    </Text>
-                    <Text style={styles.itemLabel} numberOfLines={1}>
-                        {item.show.type} / {item.show.language}
-                    </Text>
-                </View>
-            </TouchableOpacity>
-        </View>
-    );
-}
-
 const MyCarousel = () => {
     const [index, setIndex] = useState(0);
+    const navigation = useNavigation();
     const dispatch = useDispatch()
     const { allEpisode, isLoading } = useSelector((state: RootStateOrAny) => state)
 
@@ -44,6 +20,33 @@ const MyCarousel = () => {
         dispatch(getAllEpisodeBegin())
     }, [])
 
+    const renderItem = ({ item }: any) => {
+        return (
+            <View style={[styles.container, styles.itemContainer]}>
+                <TouchableOpacity
+                    activeOpacity={1}
+                    style={{ height: '100%', width: '100%' }}
+                    onPress={() => navigation.navigate("ProgrameDetail")}
+                >
+                    <Image
+                        style={styles.itemImg}
+                        source={{
+                            uri: item.show.image?.original
+                        }}
+                    />
+                    <View style={styles.textContainer}>
+                        <Text style={styles.itemNameLabel} numberOfLines={2}>
+                            {item.show.name}
+                        </Text>
+                        <Text style={styles.itemLabel} numberOfLines={1}>
+                            {item.show.type} / {item.show.language}
+                        </Text>
+                    </View>
+                </TouchableOpacity>
+            </View>
+        );
+    }
+    
     return (
         <View>
             {

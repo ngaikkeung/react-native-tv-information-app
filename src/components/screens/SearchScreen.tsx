@@ -1,11 +1,11 @@
 import React from "react";
-import { View, Text } from "react-native";
+
+import SearchStack from "../stacks/SerarchStack";
+
 
 const SearchingScreen = () => {
     return (
-        <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-            <Text>Searching Screen</Text>
-        </View>
+        <SearchStack />
     );
 };
 

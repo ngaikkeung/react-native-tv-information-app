@@ -8,6 +8,7 @@ import HomeScreen from "./screens/HomeScreen";
 import SettingScreen from "./screens/SettingScreen";
 import FavoriteScreen from "./screens/FavoriteScreen";
 import SearchingScreen from "./screens/SearchScreen";
+import HomeStack from "./stacks/HomeStack";
 
 
 const Tab = createBottomTabNavigator();
@@ -15,27 +16,31 @@ const Tab = createBottomTabNavigator();
 const routes = [
     {
         name: "Home",
-        id: "Home",
+        id: "HomeTab",
         icon: { ios: "ios-home", android: "home" },
-        component: <HomeScreen />,
+        component: <HomeStack />,
+        headerShown: false
     },
     {
         name: "Favorite",
-        id: "Favorite",
+        id: "FavoriteTab",
         icon: { ios: "ios-heart", android: "heart" },
         component: <FavoriteScreen />,
+        headerShown: true
     },
     {
-        name: "Search",
-        id: "Search",
+        name: "SearchTab",
+        id: "SearchTab",
         icon: { ios: "ios-search", android: "search" },
         component: <SearchingScreen />,
+        headerShown: false
     },
     {
         name: "Setting",
-        id: "Setting",
+        id: "SettingTab",
         icon: { ios: "ios-settings", android: "settings" },
         component: <SettingScreen />,
+        headerShown: true
     }
 ];
 
@@ -68,6 +73,7 @@ const TabNavigation = () => {
                             name={route.name}
                             component={EachScene}
                             key={route.id}
+                            options={{ headerShown: route.headerShown }}
                         />
                     );
                 })}
