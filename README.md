@@ -25,7 +25,11 @@
   - [x] [Create TV data interface](https://ithelp.ithome.com.tw/articles/10234384)
   - [x] [UseState](https://ithelp.ithome.com.tw/articles/10234586)
 - [x] Day 8 [Implement carousel](https://ithelp.ithome.com.tw/articles/10234861)
-- [ ] Day 9 [Redux, saga, useEffect](https://ithelp.ithome.com.tw/articles/10234861)
+- [x] Day 9 [Redux, saga, useEffect](https://ithelp.ithome.com.tw/articles/10234861)
   - [x] Implement action, reducer, store and provider
-  - [ ] Implement Saga
-  - [ ] Implement useEffect
+  - [x] Implement Saga
+  - [x] Implement useEffect
+- [ ] Day 10 [Create and linkage deep pages](https://ithelp.ithome.com.tw/articles/10235313)
+  - [x] Create deatail pages
+  - [x] Linkage detail pages to main pages by Stack Navigation
+  - [ ] Pass Programe detail data to detail pages
